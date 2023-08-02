@@ -17,3 +17,4 @@ const magicCarpetSchema = new Schema({
 const Flights = mongoose.model("Flights", magicCarpetSchema);
 
 module.exports = Flights;
+

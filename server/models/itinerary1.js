@@ -1,5 +1,3 @@
-itinerary
-
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const flights = require("./flights").schema;
@@ -12,9 +10,9 @@ const travelSchema = new Schema({
     required: true,
   },
   date: { type: true },
-  flight: [flights],
+  flights: [flightslights],
 });
 
-const itinerary = mongoose.model("intinerary", travelSchema);
+const Itinerary = mongoose.model("Itinerary", travelSchema);
 
-module.exports = itinerary;
+module.exports = Itinerary;

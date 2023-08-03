@@ -6,14 +6,27 @@ const typeDefs = gql`
         firstName: String
         lastName: String
         email: String
+        passenger: [passengerSchema]
         flights: [Flights]
     }
     
     type Flights {
         _id: ID
         airline: String
-        image: String
+        departureDate: Date
+        returnDate: Date
+        departureLocation: String
+        destinationLocation: String
+        airlineDeparture: Int
+        airlineArrival: Int
         price: Float
+    }
+
+    type Itinerary {
+        _id: ID
+        date: Date
+        user: [User]
+        flights: [Flights]
     }
     
     type Auth {

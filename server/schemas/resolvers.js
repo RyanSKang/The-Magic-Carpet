@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Flights } = require('../models');
+const { User, Flights, Itinerary } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -13,6 +13,9 @@ const resolvers = {
                 return user;
             };
             throw new AuthenticationError('Not logged in')
+        },
+        itinerary1: async (parent, { _id}) => {
+            return await Itinerary.findById(_id).populate();
         }
     },
     Mutation: {

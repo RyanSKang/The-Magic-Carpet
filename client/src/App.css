@@ -103,7 +103,7 @@ p {
 
 h4 {
   padding: 1.5rem 0;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--blackColor);
 }
 
@@ -122,7 +122,7 @@ h2 {
 }
 .home .mainText {
   color: var(--blackColor);
-  font-weight: 700;
+  font-weight: 900;
   font-size: 15px;
   line-height: 2.5rem;
 }

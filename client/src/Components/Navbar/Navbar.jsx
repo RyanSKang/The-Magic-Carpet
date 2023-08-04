@@ -1,45 +1,49 @@
 import React, { useState } from 'react';
+// Importing React Bootstrap
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+
 
 // import logo image
 import Logo from '../../Assets/logo.png'
 
-const Navbar = () => {
-    // Use state on navbar to show or hide navbar
+const NavbarMain = () => {
+
+    // Adding background color to the header
+    const [transparent, setTransparent] = useState('mainNavBar1')
+    const addBg = () =>{
+        if(window.scrollY >= 10){
+            setTransparent('mainNavBar1 activeHeader')
+        }else{
+            setTransparent('mainNavBar1')
+        }
+    }
+    window.addEventListener('scroll', addBg)
 
     return (
-        <div className="navBar Flex">
-            <div className="mainNavBar Flex">
-                <div className="icon"></div>
-                <div className="login">
-                    <span> Sign In</span>
-                    <span>Sign Up</span>
-                </div>
-            </div>
+        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" data-bs-theme="light">
+        <Container>
+          <Navbar.Brand className={transparent} img={Logo}>The Magic Carpet</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href='#'>Flights</Nav.Link>
+              <Nav.Link href='#'>Hotels</Nav.Link>
+              <Nav.Link href='#'>My Trips</Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link href="#deets">Sign In</Nav.Link>
+              <Nav.Link eventKey={2} href="#memes">
+                Sign Up
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  }
 
-            <div className="">
-                <div className="logo">
-                    <img src="" className="imgLogo" />
-                </div>
-            </div>
 
-            <div className=''>
-                <ul className='menu Flex'>
-                    <li onClick={ } className='navTabs'>Flights</li>
-                    <li onClick={ } className='navTabs'>Hotel</li>
-                    <li onClick={ } className='navTabs'>My Trips</li>
-                </ul>
-
-                <button className='btn contactBtn flex'> Contact </button>
-            </div>
-
-            <button className='btn contactbtn1'> Contact</button>
-
-            <div onClick={ } className='toggleIcon'>
-                <div className='icon'></div>
-            </div>
-
-        </div>
-    )
-}
-
-export default Navbar
+export default NavbarMain

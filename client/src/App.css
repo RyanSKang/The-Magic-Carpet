@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito&family=Oleo+Script&family=Poppins:wght@900&family=Roboto:wght@300&family=Work+Sans&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito&family=Oleo+Script&family=Poppins:wght@900&family=Roboto:wght@300&family=Work+Sans&display=swap");
 
-/* Universal Styling */
-* {
+Universal Styling
+{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -61,9 +61,9 @@ li {
 .flex {
   display: flex;
   align-items: center;
-}
+} 
 
-.grid {
+ .grid {
   display: grid;
   align-items: center;
 }
@@ -111,7 +111,7 @@ h2 {
   font-size: 25px;
   padding: 1rem 0;
   color: var(--blackColor);
-}
+} 
 
 /* Home Page Styling */
 .home {
@@ -144,4 +144,105 @@ h2 {
   position: absolute;
   width: 40%;
   top: 5%;
+} 
+
+/* Navbar styling */
+/* .navBar{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  flex-direction: column;
+  z-index: 1000;
+  width: 100%;
 }
+.navBar .mainNavBar, .navBar .mainNavBar1{
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+}
+.navBar .mainNavBar{
+  background: var(--SecondaryColor);
+}
+.navBar .mainNavBar .none{
+  display: none;
+}
+.navBar .mainNavBar .icon:hover{
+  color: var(--PrimaryColor);
+}
+.navBar .mainNavBar .login{
+  gap: 1rem;
+}
+.navBar .mainNavBar .login span{
+  color: var(--blackColor);
+  font-size: 13px;
+  cursor: pointer;
+}
+.navBar .mainNavBar .login span:hover{
+  color: var(--PrimaryColor);
+  font-size: 700;
+}
+.navBar .mainNavBar1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+  top: 3rem;
+  padding: 1.5rem 1rem;
+  position: fixed;
+  transition: 0.3s ease-in-out;
+}
+.navBar .mainNavBar1 .logo .imgLogo{
+  width: 20%;
+}
+@media screen and (max-width: 768px) {
+.navBar .mainNavBar1 .navBarMenu {
+  position: absolute;
+  background: var(--SecondaryColor);
+  padding: 1.5rem;
+  border-radius: 10px;
+  top: 5rem;
+  right: -50%;
+  width: 80%;
+  transform: translateX(50%);
+  z-index: 2000;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  border: 3px solid var(--whiteColor);
+  transition: 0.4s ease-in-out;
+}
+.navBar .mainNavBar1 .navBarMenu .menu{
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+.navBar .mainNavBar1 .navBarMenu .menu .navTabs{
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: var(--blackColor);
+}
+.navBar .mainNavBar1 .navBarMenu .menu .navTabs:hover{
+  color: var(--PrimaryColor);
+    font-weight: 700;
+}
+.navBar .mainNavBar1 .navBarMenu .contactBtn{
+  display: block;
+  justify-content: center;
+  margin: auto;
+  align-self: center;
+  margin-top: 1rem;
+}
+.navBar .mainNavBar1 .contactbtn1{
+  display: none;
+}
+.navBar .mainNavBar1 .showNavBar{
+  right: 50%;
+  transition: 0.5s ease-in-out;
+}
+.navBar .mainNavBar1 .toggleIcon .icon{
+  font-size: 30px;
+  color: var(--blackColor);
+}
+.navBar .activeHeader{
+  background: var(--SecondaryColor);
+  padding: 0.5rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+} */

@@ -1,62 +1,78 @@
 import React from "react";
-import Results from "../../pages/results";
 
-Results = () => {
+// Importing BootStrap CDN
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
+const Search = () => {
   return (
-    <div className="search-bar">
-      <div
-        data-aos="fade-up"
-        data-aos-duration="2500"
-        className="sectionContainer grid">
-        <div className="btns flex">
-          <div className="singleBtn ">
-            <span>Search for Flights</span>
-          </div>
-        </div>
+    <>
+      <ButtonGroup aria-label="Basic example">
+        <Button variant="secondary">Economy</Button>
+        <Button variant="secondary">Business</Button>
+        <Button variant="secondary">First Class</Button>
+      </ButtonGroup>
+      <Form>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+          </Form.Group>
 
-        <div
-          data-aos="fade-up"
-          data-aos-duration="2500"
-          className="searchInputs flex" >
-          <div className="singleInput flex">
-            <div className="texts">
-              <h4>Location</h4>
-              <input
-                type="text"
-                placeholder="Where would you like to travel?"
-              />
-            </div>
-          </div>
+          <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+        </Row>
 
-          <div className="singleInput flex">
-            <div className="texts">
-              <h4>Travelers</h4>
-              <input
-                type="text"
-                placeholder="How many travelers will there be?"
-              />
-            </div>
-          </div>
+        <Form.Group className="mb-3" controlId="formGridAddress1">
+          <Form.Label>Address</Form.Label>
+          <Form.Control placeholder="1234 Main St" />
+        </Form.Group>
 
-          <div className="singleInput flex">
-            <div className="texts">
-              <h4>Check In</h4>
-              <input type="text" placeholder="Add a date" />
-            </div>
-          </div>
+        <Form.Group className="mb-3" controlId="formGridAddress2">
+          <Form.Label>Address 2</Form.Label>
+          <Form.Control placeholder="Apartment, studio, or floor" />
+        </Form.Group>
+        <Row>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Check In</Form.Label>
+            <Form.Select defaultValue="Choose...">
+              <option>Choose...</option>
+              <option>...</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Check Out</Form.Label>
+            <Form.Select defaultValue="Choose...">
+              <option>Choose...</option>
+              <option>...</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>How many Travelers?</Form.Label>
+            <Form.Select defaultValue="Choose...">
+              <option>Choose...</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </Form.Select>
+          </Form.Group>
+        </Row>
+        <Button variant="primary" type="submit">
+          Search
+        </Button>
+      </Form>
+    </>
+  )
+}
 
-          <div className="singleInput flex">
-            <div className="texts">
-              <h4>Check Out</h4>
-              <input type="text" placeholder="Add a date" />
-            </div>
-          </div>
-
-          <button className="btn">Search for a flight!</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Results;
+export default Search

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
-
+import API from "../utils/API";
 import Auth from "../utils/auth";
-import { saveFlight, searchFlights } from "../utils/API";
+// import { saveFlight, searchFlights } from "../utils/API";
 import { getSavedFlights, saveFlightsId } from "../utils/localStorage";
 
-const SearchFlights = () => {
+API = () => {
   // create state for returned flights data
   const [searchFlights, getSearchedFlights] = useState([]);
   // create state for return searched flights
   const [searchInput, getSearchInput] = useState("");
   // create state to hold saved flightId values
-  const [savedFlightsIds, getSavedFlightIds] = useState(getSavedFlightIds);
+  const [savedFlightsIds, getSavedFlightIds] = useState(getSavedFlights);
   // set up useEffect hook to save 'savedFlightIds' list to localStorage on component unmount
   useEffect(() => {
     return () => saveFlightsId(savedFlightsIds);
@@ -63,7 +63,7 @@ const SearchFlights = () => {
         throw new Error("Error!");
       }
       // if flight saves to user's acct, save flight id to state
-      setSavedFlightIds([...savedFlightsIds, flightToSave.flightId]);
+      getSavedFlightIds([...savedFlightsIds, flightToSave.flightId]);
     } catch (err) {
       console.log(err);
     }
@@ -96,7 +96,7 @@ const SearchFlights = () => {
       </div>
       <Container>
         <h2 className="pt-5">
-          {SearchFlights.length
+          {API.length
             ? `Viewing ${searchFlights.length} results:`
             : "Search for a flight to get started"}
         </h2>
@@ -135,4 +135,4 @@ const SearchFlights = () => {
   );
 };
 
-export default results;
+export default API;

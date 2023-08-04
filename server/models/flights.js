@@ -1,9 +1,8 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const { Schema } = mongoose;
 const magicCarpetSchema = new Schema({
-  departureDate: { type: Date },
-  returnDate: { type: Date },
+  departureDate: { type: String },
+  returnDate: { type: String },
   departureLocation: { type: String },
   destinationLocation: { type: String },
   airlineDeparture: { type: Number },
@@ -14,7 +13,7 @@ const magicCarpetSchema = new Schema({
   arrivalObj: { type: Object },
 });
 
-const Flights = mongoose.model("Flights", magicCarpetSchema);
+const Flights = model("Flights", magicCarpetSchema);
 
 module.exports = Flights;
 

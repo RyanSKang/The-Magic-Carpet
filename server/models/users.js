@@ -1,8 +1,6 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const { Schema } = mongoose;
-
-const passengerSchema = new mongoose.Schema({
+const passengerSchema = new Schema({
   stripeId: {
     type: String,
     required: true,
@@ -14,13 +12,14 @@ const myUserSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   passenger: {
-    type: passengerSchema,
+    type: Schema.Types.ObjectId,
+    ref: 'passengerSchema',
     default: null,
   },
   homeCity: { type: Array },
   favoriteDestination: { type: Array },
 });
 
-const User = mongoose.model("User", myUserSchema);
+const User = model("User", myUserSchema);
 
 module.exports = User;

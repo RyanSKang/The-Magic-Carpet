@@ -1,28 +1,3 @@
-// route to retrieve logged in user's info
-// export const createdUser = (userData) => {
-//     return fetch('/api/users', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(userData),
-//     });
-// };
-
-// // save flight chosen for a logged in user
-// export const saveFlight = (flightData, token) => {
-//     return fetch('/api/users', {
-//         method: 'PUT',
-//         headers: {
-//             'Content-type': 'application/json',
-//             authorization: '',
-//         },
-//         body: JSON.stringify(flightData),
-//     });
-// };
-
-
-
 function amadeiusFetch(){
     const token = "hblCUGeTjn0KQQL8VygxEo1UvDZP"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";

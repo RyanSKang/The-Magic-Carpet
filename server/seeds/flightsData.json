@@ -1,0 +1,32 @@
+[
+    {
+        "departureDate": "01/04/23",
+        "returnDate": "01/20/23",
+        "departureLocation": "Denver, CO",
+        "destinationLocation": "Miami, FL",
+        "airlineDeparture": 12345,
+        "airlineArrival": 54321,
+        "airline": "Delta Airlines",
+        "price": 500
+    },
+    {
+        "departureDate": "05/24/23",
+        "returnDate": "06/10/23",
+        "departureLocation": "Los Angeles, CA",
+        "destinationLocation": "Dallas, TX",
+        "airlineDeparture": 23456,
+        "airlineArrival": 65432,
+        "airline": "Southwest Airlines",
+        "price": 350
+    },
+    {
+        "departureDate": "12/20/23",
+        "returnDate": "12/25/23",
+        "departureLocation": "Seattle, WA",
+        "destinationLocation": "Chicago, IL",
+        "airlineDeparture": 34567,
+        "airlineArrival": 76543,
+        "airline": "United Airlines",
+        "price": 700
+    }
+]

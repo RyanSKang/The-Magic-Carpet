@@ -14,7 +14,7 @@ const resolvers = {
             };
             throw new AuthenticationError('Not logged in')
         },
-        itinerary1: async (parent, { _id}) => {
+        itinerary: async (parent, { _id}) => {
             return await Itinerary.findById(_id).populate();
         }
     },

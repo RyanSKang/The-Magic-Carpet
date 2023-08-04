@@ -6,15 +6,15 @@ const typeDefs = gql`
         firstName: String
         lastName: String
         email: String
-        passenger: [passengerSchema]
+        passenger: String
         flights: [Flights]
     }
     
     type Flights {
         _id: ID
         airline: String
-        departureDate: Date
-        returnDate: Date
+        departureDate: Int
+        returnDate: Int
         departureLocation: String
         destinationLocation: String
         airlineDeparture: Int
@@ -24,7 +24,7 @@ const typeDefs = gql`
 
     type Itinerary {
         _id: ID
-        date: Date
+        date: Int
         user: [User]
         flights: [Flights]
     }
@@ -37,6 +37,7 @@ const typeDefs = gql`
     type Query {
         flights: [Flights]
         user: User
+        itinerary: Itinerary
     }
     
     type Mutation {

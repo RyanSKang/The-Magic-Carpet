@@ -1,4 +1,4 @@
-function amadeiusFetch(){
+function amadeusFetch(){
     const token = "hblCUGeTjn0KQQL8VygxEo1UvDZP"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";
     fetch("https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=BKK&departureDate=2023-11-01&adults=1&max=2", {
@@ -25,4 +25,4 @@ function amadeiusFetch(){
     });
 }
 
-amadeiusFetch();
+amadeusFetch();

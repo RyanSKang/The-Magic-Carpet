@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Importing BootStrap CDN
 import Button from 'react-bootstrap/Button';
@@ -7,52 +7,43 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
+// Importing react date range
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+
+
 const Search = () => {
+
   return (
     <>
-      <ButtonGroup aria-label="Basic example">
+      <ButtonGroup aria-label="Basic example" as= {Col} className="position-relative rounded-pill top-100 start-50 translate-middle bi bi-caret-down-fill">
         <Button variant="secondary">Economy</Button>
         <Button variant="secondary">Business</Button>
         <Button variant="secondary">First Class</Button>
       </ButtonGroup>
       <Form>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
+      <Row>
+        <Form.Group as={Col} controlId="formGridState" className="searchForm">
+          <Form.Label>Destination From</Form.Label>
+          <Form.Control type= "text" placeholder="Enter an Origin"></Form.Control>
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Destination To</Form.Label>
+          <Form.Control type= "text" placeholder="Enter a Destination"></Form.Control>
+        </Form.Group>
         </Row>
-
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
-        </Form.Group>
         <Row>
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Check In</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Select>
+          <Form.Group className="top-25 searchForm" as={Col} controlId="formGridState">
+            <Form.Label>Check In | Check Out</Form.Label>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DateRangePicker']}>
+                <DateRangePicker localeText={{ start: 'Check-in', end: 'Check-out' }} />
+              </DemoContainer>
+            </LocalizationProvider>
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Check Out</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Select>
-          </Form.Group>
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group className='searchForm' as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
             <Form.Select defaultValue="Choose...">
               <option>Choose...</option>

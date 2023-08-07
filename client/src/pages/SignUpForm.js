@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-// import hooks for mutations and our mutations
+import React, { useState } from 'react';
+import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBContainer } from 'cdbreact';
+import { Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -63,9 +64,8 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
+      <CDBContainer validated={validated} onSubmit={handleFormSubmit}>
+
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -75,66 +75,50 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group>
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your username"
-            name="username"
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Username is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password
-            )
-          }
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
-      </Form>
+        <CDBCard style={{ width: '30rem' }}>
+          <CDBCardBody className="mx-4">
+            <div className="text-center mt-4 mb-2">
+              <p className="h4"> Sign Up </p>
+            </div>
+            <CDBInput material hint="E-mail" type="username" value={userFormData.username} onChange={handleInputChange} placeholder='Username' />
+            <CDBInput material hint="E-mail" type="email" value={userFormData.email} onChange={handleInputChange} placeholder='Enter valid email address' />
+            <CDBInput material hint="Password" type="password" value={userFormData.password} onChange={handleInputChange} placeholder='Enter a password' />
+            <CDBBtn
+              color="dark"
+              className="btn-block my-3 mx-0"
+              disabled={
+                !(
+                  userFormData.username &&
+                  userFormData.email &&
+                  userFormData.password
+                )
+              }
+              type="submit"
+              variant="success">
+              Sign Up
+            </CDBBtn>
+            <p className="text-center">
+              Already a member?{' '}
+              <Link className="d-inline p-0" to="/login">
+                Login
+              </Link>
+            </p>
+            <p className="text-center"> or sign up with</p>
+            <div className="flex-row my-3 d-flex justify-content-center">
+              <CDBBtn color="white" style={{ boxShadow: 'none' }}>
+                <CDBIcon fab icon="facebook-f" />
+              </CDBBtn>
+              <CDBBtn color="white" className="m-0" style={{ boxShadow: 'none' }}>
+                <CDBIcon fab icon="twitter" />
+              </CDBBtn>
+              <CDBBtn color="white" style={{ boxShadow: 'none' }}>
+                <CDBIcon fab icon="google-plus-g" />
+              </CDBBtn>
+            </div>
+          </CDBCardBody>
+        </CDBCard>
+      </CDBContainer>
     </>
-  );
+  )
 };
-
 export default SignupForm;

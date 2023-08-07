@@ -1,9 +1,12 @@
 // see SignupForm.js for comments
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+
+// Importing CDBReact for styling
+import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBContainer, CDBLink } from 'cdbreact';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -50,56 +53,79 @@ const LoginForm = () => {
       password: "",
     });
   };
-
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
-          Something went wrong with your login credentials!
-        </Alert>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your email"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
-        {error && <div>Login failed</div>}
-      </Form>
+      <Alert
+        style={{ width: 'auto', height: '3.5rem', textAlign: "center", display: 'flex', alignItems: 'center', height: '100%', justifyContent: 'center' }}
+      dismissible
+      onClose={() => setShowAlert(false)}
+      show={showAlert}
+      variant="danger"
+      >
+        Something went wrong with your login credentials!
+      </Alert>
+      <CDBContainer
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          boxShadow: '10px'
+        }}>
+        <CDBCard style={{ width: '30rem' }}>
+          <CDBCardBody className="mx-4">
+            <div className="text-center mt-4 mb-2">
+              <p className="h4 font-weight-bold"> Sign in </p>
+            </div>
+            <CDBInput
+              label="E-mail"
+              type="email"
+              placeholder="Your email"
+              name="email"
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required />
+            <CDBInput
+              label="Password"
+              type="password"
+              placeholder="Your password"
+              name="password"
+              onChange={handleInputChange}
+              value={userFormData.password}
+              required />
+            <CDBBtn
+              color="dark"
+              className="btn-block my-4 mx-auto"
+              disabled={!(userFormData.email && userFormData.password)}
+              type="submit"
+              variant="success">
+              Sign in
+            </CDBBtn>
+            {error && <div>Login failed</div>}
+            <p className="text-center"> or sign in with</p>
+            <div className="flex-row my-3 d-flex justify-content-center">
+              <CDBBtn color="white" className="m-0">
+                <CDBIcon fab icon="facebook-f" />
+              </CDBBtn>
+              <CDBBtn color="white" className="m-0">
+                <CDBIcon fab icon="twitter" />
+              </CDBBtn>
+              <CDBBtn color="white" className="m-0">
+                <CDBIcon fab icon="google-plus-g" />
+              </CDBBtn>
+            </div>
+            <hr />
+            <p className="text-center">
+              Not a member?{' '}
+              <CDBLink className="d-inline p-0" link to="/signup">
+                Sign up
+              </CDBLink>
+            </p>
+          </CDBCardBody>
+        </CDBCard>
+      </CDBContainer>
     </>
   );
 };

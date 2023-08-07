@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBContainer, CDBLink } from 'cdbreact';
-import { CDBAlert } from 'cdbreact';
+import { Alert } from 'react-bootstrap';
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -63,29 +63,37 @@ const SignupForm = () => {
 
   return (
     <>
-      <CDBContainer validated={validated} onSubmit={handleFormSubmit}>
+      <Alert
+        style={{ width: 'auto', height: '3.5rem', textAlign: "center", display: 'flex', alignItems: 'center', height: '100%', justifyContent: 'center' }}
+      dismissible
+      onClose={() => setShowAlert(false)}
+      show={showAlert}
+      variant="danger"
+      >
+        Something went wrong with your signup!
+      </Alert>
 
-        <CDBAlert
-          // style={{ width: '20rem' }}
-          // dismissible
-          onClose={() => setShowAlert(false)}
-          // show={showAlert}
-          // variant="danger"
-        >
-          Something went wrong with your signup!
-        </CDBAlert>
-
-        <CDBCard style={{ width: '30rem' }}>
+      <CDBContainer
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          boxShadow: '10px'
+        }}>
+        <CDBCard style={{ width: '31.2rem' }}>
           <CDBCardBody className="mx-4">
             <div className="text-center mt-4 mb-2">
               <p className="h4"> Sign Up </p>
             </div>
-            <CDBInput material hint="E-mail" type="username" value={userFormData.username} onChange={handleInputChange} placeholder='Username' />
+            <CDBInput material hint="username" type="username" value={userFormData.username} onChange={handleInputChange} placeholder='Username' />
             <CDBInput material hint="E-mail" type="email" value={userFormData.email} onChange={handleInputChange} placeholder='Enter valid email address' />
             <CDBInput material hint="Password" type="password" value={userFormData.password} onChange={handleInputChange} placeholder='Enter a password' />
             <CDBBtn
               color="dark"
-              className="btn-block my-3 mx-0"
+              className="btn-block my-3 mx-auto"
               disabled={
                 !(
                   userFormData.username &&

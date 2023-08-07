@@ -1,5 +1,5 @@
 export function amadeiusFetch(searchInput){
-    const token = "POWOQFehbAYXV77IMAlDbTczPSiD"
+    const token = "bUwNiEDe9gMJHQAfNHFGhHrHZtNs"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";
     return fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=${searchInput}&departureDate=2023-11-01&adults=1&max=2`, {
         method:"GET",

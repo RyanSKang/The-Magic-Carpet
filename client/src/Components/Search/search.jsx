@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
+
+// Importing Container
+import { Container, Card } from "react-bootstrap";
 
 // Importing BootStrap CDN
 import Button from "react-bootstrap/Button";
@@ -17,15 +21,17 @@ import { amadeiusFetch } from "../../utils/API";
 const Search = () => {
   const [searchedFlights, setSearchedFlights] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
+  const navigate = useNavigate()
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(searchInput);
+    
     if (!searchInput) {
       return false;
     }
 
     try {
+      console.log(searchInput);
       const response = await amadeiusFetch(searchInput);
       if (!response.ok) {
         // throw new Error("something went wrong!");
@@ -35,7 +41,8 @@ const Search = () => {
       const flightData = data.map((flight) => ({
         price: flight.price.base,
         id: flight.id,
-      }));
+      })); 
+      navigate("/results", {state: {flightData}})
       console.log(flightData);
       setSearchedFlights(flightData);
       setSearchInput("");
@@ -74,7 +81,10 @@ const Search = () => {
           <Row>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination To</Form.Label>
-            <Form.Control type="text" placeholder="Enter a Destination" ></Form.Control>
+            <Form.Control type="text" placeholder="Enter a Destination" 
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}>
+            </Form.Control>
           </Form.Group>
         </Row>
         <Form>
@@ -118,12 +128,40 @@ const Search = () => {
             </Form.Select>
           </Form.Group>
         </Row>
-        <Button onClick={(e) => Search(e.target.value)} variant="primary" type="search">
+        <Button variant="primary" type="submit">
           Search
         </Button>
       </Form>
+      <Container>
+        <h2 className='pt-5'>
+          {searchedFlights.length
+            ? `Viewing ${searchedFlights.length} results:`
+            : 'Search for a flight to begin'}
+        </h2>
+        <Row>
+          {searchedFlights.map((flight) => {
+            return (
+              <Col md="4">
+                <Card key={flight.flightId} border='dark'>
+                  <Card.Body>
+                      {/* <Button
+                        disabled={savedFlightIds?.some((savedFlightIds) => savedFlightIds === flight.flightId)}
+                        className='btn-block btn-info'
+                        onClick={() => handleSaveFlight(flight.flightId)}>
+                        {savedFlightIds?.some((savedFlightIds) => savedFlightIds === flight.flightId)
+                          ? 'This flight has already been saved!'
+                          : 'Save this flight!'}
+                    </Button> */}
+                  </Card.Body>
+                </Card>
+              </Col>
+            )
+          })}
+        </Row>
+      </Container>
     </>
-  )
+    );
 };
+
 
 export default Search;

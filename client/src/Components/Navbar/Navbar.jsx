@@ -54,7 +54,7 @@ const NavbarMain = () => {
         <Navbar.Brand className={transparent} img={Logo}>The Magic Carpet</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav>
-            <Link to="/login">Log In</Link>
+            <Link to="login">Log In</Link>
             <Link to="signup">
               Sign Up
             </Link>

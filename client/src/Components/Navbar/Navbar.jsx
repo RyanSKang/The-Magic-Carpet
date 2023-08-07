@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import auth from '../../utils/auth';
-import { Link } from 'react-router-dom'
 // Importing React Bootstrap
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import { Link } from 'react-router-dom'
 
 
 // import logo image
@@ -33,10 +32,10 @@ const NavbarMain = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link href='/'>Home</Nav.Link>
-              <Nav.Link href='#'>Flights</Nav.Link>
-              <Nav.Link href='#'>Hotels</Nav.Link>
-              <Nav.Link href='#'>My Trips</Nav.Link>
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+              <Nav.Link as={Link} to='#'>Flights</Nav.Link>
+              <Nav.Link as={Link} to='#'>Hotels</Nav.Link>
+              <Nav.Link as={Link} to='#'>My Trips</Nav.Link>
             </Nav>
 
             <Nav>
@@ -53,11 +52,14 @@ const NavbarMain = () => {
       <Container>
         <Navbar.Brand className={transparent} img={Logo}>The Magic Carpet</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Nav>
-            <Link to="login">Log In</Link>
-            <Link to="signup">
+          <Nav className="me-auto">
+          <Nav.Link as={Link} to='/'>Home</Nav.Link>
+          </Nav>
+          <Nav className="me-right">
+            <Nav.Link as={Link} to="/login">Log In</Nav.Link>
+            <Nav.Link as={Link} to="/signup">
               Sign Up
-            </Link>
+            </Nav.Link>
           </Nav>
       </Container>
     </Navbar>

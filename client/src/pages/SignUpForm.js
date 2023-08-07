@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBContainer } from 'cdbreact';
-import { Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBContainer, CDBLink } from 'cdbreact';
+import { CDBAlert } from 'cdbreact';
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -66,14 +65,15 @@ const SignupForm = () => {
     <>
       <CDBContainer validated={validated} onSubmit={handleFormSubmit}>
 
-        <Alert
-          dismissible
+        <CDBAlert
+          // style={{ width: '20rem' }}
+          // dismissible
           onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
+          // show={showAlert}
+          // variant="danger"
         >
           Something went wrong with your signup!
-        </Alert>
+        </CDBAlert>
 
         <CDBCard style={{ width: '30rem' }}>
           <CDBCardBody className="mx-4">
@@ -99,9 +99,9 @@ const SignupForm = () => {
             </CDBBtn>
             <p className="text-center">
               Already a member?{' '}
-              <Link className="d-inline p-0" to="/login">
+              <CDBLink className="d-inline p-0" link to="/login">
                 Login
-              </Link>
+              </CDBLink>
             </p>
             <p className="text-center"> or sign up with</p>
             <div className="flex-row my-3 d-flex justify-content-center">

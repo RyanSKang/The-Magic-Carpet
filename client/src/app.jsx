@@ -15,10 +15,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 // Importing Components
 import Home from './pages/home'
 import NavbarMain from './Components/Navbar/Navbar'
-import Search from './Components/Search/search'
-import Signup from './pages/signup';
-import Login from './pages/login';
+// import Signup from './pages/signup';
+import SignupForm from './pages/SignUpForm';
+import LoginForm from './pages/LoginForm';
 import ResultsPage from './pages/resultsPages'
+// import Login from './pages/login';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -52,11 +53,11 @@ const App= () => {
                         />
                         <Route
                             path="/signup"
-                            element={<Signup />}
+                            element={<SignupForm />}
                         />
                         <Route
                             path="/login"
-                            element={<Login />}
+                            element={<LoginForm />}
                         />
                         <Route
                             path="/results"

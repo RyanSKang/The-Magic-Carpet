@@ -118,11 +118,7 @@ const Search = () => {
             </Form.Select>
           </Form.Group>
         </Row>
-        {/* <Button variant="primary" type="submit">
-
-      </Row> */}
         <Button onClick={(e) => Search(e.target.value)} variant="primary" type="search">
-
           Search
         </Button>
       </Form>

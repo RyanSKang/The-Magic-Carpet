@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import auth from '../../utils/auth';
+import { Link } from 'react-router-dom'
 // Importing React Bootstrap
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -53,10 +54,10 @@ const NavbarMain = () => {
         <Navbar.Brand className={transparent} img={Logo}>The Magic Carpet</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav>
-            <Nav.Link href="#">Log In</Nav.Link>
-            <Nav.Link eventKey={2} href="#">
+            <Link to="/login">Log In</Link>
+            <Link to="signup">
               Sign Up
-            </Nav.Link>
+            </Link>
           </Nav>
       </Container>
     </Navbar>

@@ -63,7 +63,6 @@ const App= () => {
                             element={<ResultsPage />}
                         />
                     </Routes>
-                    <Search />
                 </div>
             </Router>
 

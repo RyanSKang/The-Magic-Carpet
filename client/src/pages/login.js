@@ -4,8 +4,6 @@ import Auth from "../utils/auth";
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });

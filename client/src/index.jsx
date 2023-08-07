@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './App.css';
 import App from './app';
 import reportWebVitals from './reportWebVitals';
-import ResultsPage from './pages/resultsPages';
+import Results from './pages/resultsPages';
+import SignUp from './pages/signup';
 
 // Importing a Browser Router to link multiple pages
 import {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
   },
   {
     path: "results",
-    element: <ResultsPage></ResultsPage>
+    element: <Results />,
+  },
+  {
+    path: "signup",
+    element: <SignUp />
   }
 ]);
 

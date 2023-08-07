@@ -34,8 +34,8 @@ const NavbarMain = () => {
               <Nav.Link href='#'>My Trips</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">Sign In</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
+              <Nav.Link href="#">Sign In</Nav.Link>
+              <Nav.Link eventKey={2} href="#">
                 Sign Up
               </Nav.Link>
             </Nav>

@@ -14,7 +14,6 @@ SO THAT I can plan my trip accordingly
 - [Installation](#installation)
 - [Usage Instructions](#usage-instructions) 
 - [Usage Screenshots](#screenshots)
-- [Walkthrough Video](#walkthrough-video)
 - [Credits](#credits)  
 
 # Overview
@@ -50,11 +49,9 @@ Following Installation Needed:
     -Mongoose [v6.1.8](https://www.npmjs.com/package/mongoose/v/6.1.8)     
     -Node [v20.5.0](https://www.npmjs.com/package/node)   
     -Dayjs [v1.11.9](https://www.npmjs.com/package/dayjs)    
-    -JSON webtoken [v9.0.1](https://www.npmjs.com/package/jsonwebtoken)    
-    -@mui UI tools [v6.11.0](https://mui.com/)    
-    -@emotion/react [v11.11.1](https://mui.com/)   
-    -@emotion/styled [v11.11.0](https://mui.com/)    
+    -JSON webtoken [v9.0.1](https://www.npmjs.com/package/jsonwebtoken)     
     -Apollo-server-expresss [v3.6.2](https://www.npmjs.com/package/apollo-server-express)  
+    -RSUITE [v5.35.1](https://www.npmjs.com/package/rsuite/v/5.35.1)
    
 
 ## Usage Instructions

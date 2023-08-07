@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Importing Container
 import { Container, Card } from "react-bootstrap";
@@ -25,7 +25,7 @@ const Search = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(searchInput);
-    
+
     if (!searchInput) {
       return false;
     }
@@ -41,8 +41,8 @@ const Search = () => {
       const flightData = data.map((flight) => ({
         price: flight.price.base,
         id: flight.id,
-      })); 
-      navigate("/results", {state: {flightData}})
+      }));
+      navigate("/results", { state: { flightData } })
       console.log(flightData);
       setSearchedFlights(flightData);
       setSearchInput("");
@@ -67,7 +67,15 @@ const Search = () => {
         <Button variant="secondary">First Class</Button>
       </ButtonGroup>
       <Form onSubmit={handleFormSubmit}>
-        <Row>
+        <Row
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            justifyContent: 'center',
+            width: '90%',
+            textAlign: 'center',
+          }}>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination From</Form.Label>
             <Form.Control
@@ -78,41 +86,13 @@ const Search = () => {
               onChange={(e) => setSearchInput(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Row>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination To</Form.Label>
-            <Form.Control type="text" placeholder="Enter a Destination" 
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}>
+            <Form.Control type="text" placeholder="Enter a Destination"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}>
             </Form.Control>
           </Form.Group>
-        </Row>
-        <Form>
-        <Row>
-          <Form.Group
-            className="top-25 searchForm"
-            as={Col}
-            controlId="formGridState"
-          >
-            {/* <Form.Label>Check In | Check Out</Form.Label>
-            <DatePicker
-              selected={startDate}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(date) => setStartDate(date)}
-            />
-            <DatePicker
-              selected={endDate}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              onChange={(date) => setEndDate(date)}
-            /> */}
-          </Form.Group>
-          </Row>
-          </Form>
           <Form.Group className="searchForm" as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
             <Form.Select defaultValue="Choose...">
@@ -128,7 +108,44 @@ const Search = () => {
             </Form.Select>
           </Form.Group>
         </Row>
-        <Button variant="primary" type="submit">
+        <Form>
+          <Row>
+            <Form.Group
+              className="top-25 searchForm"
+              as={Col}
+              controlId="formGridState"
+            >
+              {/* <Form.Label>Check In | Check Out</Form.Label>
+            <DatePicker
+              selected={startDate}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              onChange={(date) => setStartDate(date)}
+            />
+            <DatePicker
+              selected={endDate}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              onChange={(date) => setEndDate(date)}
+            /> */}
+            </Form.Group>
+          </Row>
+        </Form>
+        <Button
+          style={{
+            display: "block",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            boxShadow: '10px',
+            width: "30%"
+          }}
+          variant="primary"
+          type="submit"
+          className="btn-block my-5 mx-auto">
           Search
         </Button>
       </Form>
@@ -144,7 +161,7 @@ const Search = () => {
               <Col md="4">
                 <Card key={flight.flightId} border='dark'>
                   <Card.Body>
-                      {/* <Button
+                    {/* <Button
                         disabled={savedFlightIds?.some((savedFlightIds) => savedFlightIds === flight.flightId)}
                         className='btn-block btn-info'
                         onClick={() => handleSaveFlight(flight.flightId)}>
@@ -160,7 +177,7 @@ const Search = () => {
         </Row>
       </Container>
     </>
-    );
+  );
 };
 
 

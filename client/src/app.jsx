@@ -9,17 +9,21 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 // Importing CSS
-import './App.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // Importing Components
-import Home from './pages/home'
-import NavbarMain from './Components/Navbar/Navbar'
+import Home from './pages/home';
+import NavbarMain from './Components/Navbar/Navbar';
 // import Signup from './pages/signup';
 import SignupForm from './pages/SignUpForm';
 import LoginForm from './pages/LoginForm';
-import ResultsPage from './pages/resultsPages'
+import ResultsPage from './pages/resultsPages';
+import PaymentPage from './pages/payment';
+import CheckOutForm from './pages/CheckOutForm';
 // import Login from './pages/login';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -40,7 +44,18 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
+
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const App= () => {
+    const options = {
+        // passing the client secret obtained from the server
+        clientSecret: '{{CLIENT_SECRET}}',
+      };
+
     return(
         <ApolloProvider client={client}>
             <Router>
@@ -62,6 +77,16 @@ const App= () => {
                         <Route
                             path="/results"
                             element={<ResultsPage />}
+                        />
+                        <Route
+                            path="/payment"
+                            element={<PaymentPage />}
+                        />
+                        <Route
+                            path="/checkout"
+                            element={<Elements stripe={stripePromise} options={options}>
+                            <CheckOutForm />
+                          </Elements>}
                         />
                     </Routes>
                 </div>

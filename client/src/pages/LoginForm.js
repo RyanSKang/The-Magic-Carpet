@@ -17,14 +17,18 @@ const LoginForm = () => {
   // ADD_USER mutation in order to talk to graphql
   // addUser will hold the output and error the error
 
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER, { variables: {email: userFormData.email, password: userFormData.password}});
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    console.log(name);
     setUserFormData({ ...userFormData, [name]: value });
   };
 
+  console.log(userFormData)
+
   const handleFormSubmit = async (event) => {
+    console.log('something');
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
@@ -32,6 +36,9 @@ const LoginForm = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    }
+    if (error) {
+      throw new Error("something went wrong!");
     }
 
     try {
@@ -48,7 +55,6 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-
       email: "",
       password: "",
     });
@@ -66,7 +72,6 @@ const LoginForm = () => {
       </Alert>
       <CDBContainer
         validated={validated}
-        onSubmit={handleFormSubmit}
         style={{
           display: "flex",
           alignItems: "center",
@@ -79,31 +84,16 @@ const LoginForm = () => {
             <div className="text-center mt-4 mb-2">
               <p className="h4 font-weight-bold"> Log in </p>
             </div>
-            <CDBInput
-              label="E-mail"
-              type="email"
-              placeholder="Your email"
-              name="email"
-              onChange={handleInputChange}
-              value={userFormData.email}
-              required />
-            <CDBInput
-              label="Password"
-              type="password"
-              placeholder="Your password"
-              name="password"
-              onChange={handleInputChange}
-              value={userFormData.password}
-              required />
+            <CDBInput name="email" material hint="E-mail" type="email" value={userFormData.email} onChange={handleInputChange} placeholder='Enter valid email address' />
+            <CDBInput name="password" material hint="Password" type="password" value={userFormData.password} onChange={handleInputChange} placeholder='Enter a password' />
             <CDBBtn
               color="dark"
               className="btn-block my-4 mx-auto"
-              disabled={!(userFormData.email && userFormData.password)}
               type="submit"
-              variant="success">
-              Sign in
+              variant="success"
+              onClick={handleFormSubmit}>
+              Log in
             </CDBBtn>
-            {error && <div>Login failed</div>}
             <p className="text-center"> or sign in with</p>
             <div className="flex-row my-3 d-flex justify-content-center">
               <CDBBtn color="white" className="m-0">

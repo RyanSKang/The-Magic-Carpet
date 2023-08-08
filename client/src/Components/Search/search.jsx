@@ -105,9 +105,9 @@ const Search = () => {
           <Form.Group className="searchForm" as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
             <Form.Select
-            value={travelers}
-            defaultValue="Choose..."
-            onChange={(event) => {setTravelers(event.target.value)}}
+              value={travelers}
+              defaultValue="Choose..."
+              onChange={(event) => { setTravelers(event.target.value) }}
             >
               <option>Choose...</option>
               <option value="1">1</option>
@@ -120,33 +120,30 @@ const Search = () => {
               <option value="8">8</option>
             </Form.Select>
           </Form.Group>
+          <Form.Group className="searchForm" as={Col} controlId="formGridState">
+            <Form.Label>Check In | Check Out</Form.Label>
+            <Form style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 'auto' }}>
+              <DatePicker
+                className="p-1 l-1"
+                selected={startDate}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                onChange={(date) => setStartDate(date)}
+              />
+              <DatePicker
+                className="p-1 r-1"
+                selected={endDate}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                onChange={(date) => setEndDate(date)}
+              />
+            </Form>
+          </Form.Group>
         </Row>
-        <Form>
-          <Row>
-            <Form.Group
-              className="top-25 searchForm"
-              as={Col}
-              controlId="formGridState"
-            >
-              <Form.Label>Check In | Check Out</Form.Label>
-            <DatePicker
-              selected={startDate}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(date) => setStartDate(date)}
-            />
-            <DatePicker
-              selected={endDate}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              onChange={(date) => setEndDate(date)}
-            />
-            </Form.Group>
-          </Row>
-        </Form>
+
         <Button
           style={{
             display: "block",

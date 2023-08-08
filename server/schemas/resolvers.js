@@ -57,17 +57,18 @@ const resolvers = {
             }
         },
         // remove a flight from `savedFlights`
-        async deleteBook({ user, params }, res) {
-            const updatedUser = await User.findOneAndUpdate(
-                { _id: user._id },
-                { $pull: { savedFlights: { _id: params._id } } },
-                { new: true }
-            );
-            if (!updatedUser) {
-                return res.status(404).json({ message: "Couldn't find user with this id!" });
-            }
-            return res.json(updatedUser);
-        },
+
+        // async deleteFlight({ user, params }, res) {
+        //     const updatedUser = await User.findOneAndUpdate(
+        //         { _id: user._id },
+        //         { $pull: { savedFlights: { _id: params._id } } },
+        //         { new: true }
+        //     );
+        //     if (!updatedUser) {
+        //         return res.status(404).json({ message: "Couldn't find user with this id!" });
+        //     }
+        //     return res.json(updatedUser);
+        // },
     }
 };
 

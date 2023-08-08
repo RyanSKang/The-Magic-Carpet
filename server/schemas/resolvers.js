@@ -14,7 +14,7 @@ const resolvers = {
             };
             throw new AuthenticationError('Not logged in')
         },
-        itinerary: async (parent, { _id}) => {
+        itinerary: async (parent, { _id }) => {
             return await Itinerary.findById(_id).populate();
         }
     },
@@ -42,21 +42,34 @@ const resolvers = {
 
             return { token, user };
         },
-        // saveFLight: async (parent, { flightInput}, context) => {
-        //     console.log(context.user);
-        //     console.log(flightInput);
-        //     if (context.user) {
-        //         const flight = await User.findByIdAndUpdate(
-        //             { _id: context.user._id },
-        //             { $push: { savedFlights: flightInput } },
-        //             { new: true }
-        //         );
-        //         return flight;
-        //     }
-        //     throw new AuthenticationError("You need to be logged in!");
-
-        }
+        async saveFlight({ user, body }, res) {
+            console.log(user);
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: user._id },
+                    { $addToSet: { savedFlights: body } },
+                    { new: true, runValidators: true }
+                );
+                return res.json(updatedUser);
+            } catch (err) {
+                console.log(err);
+                return res.status(400).json(err);
+            }
+        },
+        // remove a flight from `savedFlights`
+        async deleteBook({ user, params }, res) {
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: user._id },
+                { $pull: { savedFlights: { _id: params._id } } },
+                { new: true }
+            );
+            if (!updatedUser) {
+                return res.status(404).json({ message: "Couldn't find user with this id!" });
+            }
+            return res.json(updatedUser);
+        },
     }
-// };
+};
+
 
 module.exports = resolvers;

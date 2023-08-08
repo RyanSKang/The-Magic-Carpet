@@ -1,15 +1,15 @@
-export const getSavedFlights = () => {
-    const savedFlightsIds = localStorage.getItem('results')
-    ? JSON.parse(localStorage.getItem('results'))
+export const getSavedFlightsIds = () => {
+    const savedFlightsIds = localStorage.getItem('saved_flights')
+    ? JSON.parse(localStorage.getItem('saved_flights'))
     : [];
     return savedFlightsIds;
 };
 
 export const saveFlightsId = (flightsIdArr) => {
     if (flightsIdArr.length) {
-        localStorage.setItem('results', JSON.stringify(flightsIdArr));
+        localStorage.setItem('saved_flights', JSON.stringify(flightsIdArr));
     } else {
-        localStorage.removeItem('results');
+        localStorage.removeItem('saved_flights');
     }
 };
 

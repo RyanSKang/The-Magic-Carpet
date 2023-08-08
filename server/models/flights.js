@@ -9,8 +9,9 @@ const magicCarpetSchema = new Schema({
   airlineArrival: { type: Number },
   airline: { type: String },
   price: { type: Number },
-  departureObj: { type: Object },
-  arrivalObj: { type: Object },
+  // departureObj: { type: Object },
+  // arrivalObj: { type: Object },
+  flightId: { type: String, required: true }
 });
 
 const Flights = model("Flights", magicCarpetSchema);

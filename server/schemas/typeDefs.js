@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        flights: [Flights]
+        savedFlights: [Flights]
     }
     
     type Flights {
@@ -38,10 +38,22 @@ const typeDefs = gql`
         user: User
         itinerary: Itinerary
     }
+
+    input FlightInput {
+        airline: String
+        departureDate: Int
+        returnDate: Int
+        departureLocation: String
+        destinationLocation: String
+        airlineDeparture: Int
+        airlineArrival: Int
+        price: Float
+    }
     
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
+        saveFlight(flightInput: FlightInput): User
     }
     `;
 

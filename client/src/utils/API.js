@@ -1,3 +1,6 @@
+//import ProxyAgent from 'https-proxy-agent';
+    import Stripe from 'stripe';
+
 export function amadeiusFetch(destinationLocation, originLocation, startDate, endDate, travelers){
     let travelersInput = travelers
     if (!travelers) {
@@ -43,4 +46,39 @@ export function amadeiusFetch(destinationLocation, originLocation, startDate, en
     // });
 };
 
-// amadeusFetch();
+export function makePayment(){
+    console.log('sanity');
+
+    const stripe = Stripe('sk_test_51NctyCFyWidVklAJsbKkyguBJRUcrXAMl48VmsuTplpPdXQOxr1bfczyiKczGwZVvOjDXmAG1IZrsR9MAASIzUdA004gpBaQCa', {
+      //httpAgent: new ProxyAgent(process.env.http_proxy),
+    });
+    
+    // Create a new customer and then create an invoice item then invoice it:
+    return stripe.customers
+      .create({
+        email: 'drspinaltap@gmail.com',
+      })
+      .then((customer) => {
+        // have access to the customer object
+        return stripe.invoiceItems
+          .create({
+            customer: customer.id, // set the customer id
+            amount: 2500, // 25
+            currency: 'usd',
+            description: 'One-time setup fee',
+          })
+          .then((invoiceItem) => {
+            return stripe.invoices.create({
+              //collection_method: 'send_invoice',
+              due_date: (new Date().setDate(new Date().getDate() + 1).getTime())/1000,
+              customer: invoiceItem.customer,
+            });
+          })
+          .then((invoice) => {
+            console.log(invoice);
+          })
+          .catch((err) => {
+            // Deal with an error
+          });
+      });
+};

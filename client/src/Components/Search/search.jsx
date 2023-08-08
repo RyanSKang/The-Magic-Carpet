@@ -171,11 +171,11 @@ const Search = () => {
         </Button>
       </Form>
       <Container>
-        <h2 className='pt-5'>
+        {/* <h2 className='pt-5'>
           {searchedFlights.length
             ? `Viewing ${searchedFlights.length} results:`
             : 'Search for a flight to begin'}
-        </h2>
+        </h2> */}
         <Row>
           {searchedFlights.map((flight) => {
             return (

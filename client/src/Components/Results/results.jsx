@@ -21,7 +21,7 @@ const ResultsPage = ({ ...props }) => {
           <p>{flight.travelers}</p>
           <p>{flight.iataCode}</p>
           <p>{flight.id}</p>
-          <p>{flight.duration}</p> 
+          <p>{flight.duration}</p>
         </Card>
       ))}
       {/* <div>

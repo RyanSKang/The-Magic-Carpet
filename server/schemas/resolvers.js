@@ -25,12 +25,6 @@ const resolvers = {
 
             return { token, user };
         },
-        updateUser: async (parent,args, context) => {
-            if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-            }
-            throw new AuthenticationError('Not logged in');
-        },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 

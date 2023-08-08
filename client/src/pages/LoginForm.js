@@ -56,7 +56,7 @@ const LoginForm = () => {
   return (
     <>
       <Alert
-        style={{ width: 'auto', height: '3.5rem', textAlign: "center", display: 'flex', alignItems: 'center', height: '100%', justifyContent: 'center' }}
+        style={{ width: 'auto', height: '3.5rem', textAlign: "center", display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       dismissible
       onClose={() => setShowAlert(false)}
       show={showAlert}
@@ -77,7 +77,7 @@ const LoginForm = () => {
         <CDBCard style={{ width: '30rem' }}>
           <CDBCardBody className="mx-4">
             <div className="text-center mt-4 mb-2">
-              <p className="h4 font-weight-bold"> Sign in </p>
+              <p className="h4 font-weight-bold"> Log in </p>
             </div>
             <CDBInput
               label="E-mail"

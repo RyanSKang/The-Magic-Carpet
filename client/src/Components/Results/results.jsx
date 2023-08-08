@@ -1,30 +1,30 @@
 // import React from 'react';
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 // import Button from 'react-bootstrap/Button';
 // import Offcanvas from 'react-bootstrap/Offcanvas';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const ResultsPage = ({ ...props }) => {
-    // const [show, setShow] = useState(false);
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    const location = useLocation();
-    console.log(location.state);
-    return (
-        <>
-        <div>Results Page</div>
-        {location.state.flightData.map((flight, i) => (
-            <Card>
-                {flight.price}
-                {flight.id}
-                {flight.travelers}
-                {flight.originLocation}
-                {flight.iataCode}
-                {flight.destinationLocation}
-                {flight.duration}
-            </Card>
-        ))}
-        {/* <div>
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  const location = useLocation();
+  console.log(location.state);
+  return (
+    <>
+      <div>Results Page</div>
+      {location.state.flightData.map((flight, i) => (
+        <Card>
+          <p>{flight.originLocation}</p>
+          <p>{flight.destinationLocation}</p>
+          <p>{flight.price}</p>
+          <p>{flight.travelers}</p>
+          <p>{flight.iataCode}</p>
+          <p>{flight.id}</p>
+          <p>{flight.duration}</p> 
+        </Card>
+      ))}
+      {/* <div>
             <Card body>{location.state.searchResults}</Card>
             <Button variant="primary" onClick={handleShow} className="me-2">
                 Purchase Flight
@@ -39,8 +39,8 @@ const ResultsPage = ({ ...props }) => {
                 </Offcanvas.Body>
             </Offcanvas>
         </div> */}
-        </>
-    )
-}
+    </>
+  );
+};
 
-export default ResultsPage
+export default ResultsPage;

@@ -50,9 +50,9 @@ const Search = () => {
         price: data.price.base,
         id: data.id,
         travelers: data.travelers,
-        originLocation: data.originLocation,
-        iataCode: data.iataCode,
-        destinationLocation: data.destinationLocation,
+        originLocation: data.itineraries[0].segments[0].departure.iataCode,
+        // iataCode: data.iataCode,
+        destinationLocation: data.itineraries[0].segments[0].arrival.iataCode,
         // searchInput instead of arrival
         duration: data.duration
       }));
@@ -203,3 +203,4 @@ const Search = () => {
 
 
 export default Search;
+

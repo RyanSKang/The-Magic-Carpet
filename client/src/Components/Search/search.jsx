@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Importing Container
+// Importing Container & Card
 import { Container, Card } from "react-bootstrap";
 
 // Importing BootStrap CDN
@@ -12,40 +12,54 @@ import Row from "react-bootstrap/Row";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 // Importing react date range
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // Importing amedius API
 import { amadeiusFetch } from "../../utils/API";
 
 const Search = () => {
   const [searchedFlights, setSearchedFlights] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  const [destinationLocation, setDestinationLocation] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [originLocation, setOriginLocation] = useState();
+  const [travelers, setTravelers] = useState();
+  // const [travelers] = useState();
+  console.log(startDate, endDate);
   const navigate = useNavigate()
+  const formatDate = (date) => {
+    return date.toISOString().split('T')[0]
+  };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(searchInput);
-
-    if (!searchInput) {
+    if (!destinationLocation) {
       return false;
     }
 
     try {
-      console.log(searchInput);
-      const response = await amadeiusFetch(searchInput);
+      console.log(destinationLocation);
+      const response = await amadeiusFetch(destinationLocation, originLocation, formatDate(startDate), formatDate(endDate), travelers);
       if (!response.ok) {
         // throw new Error("something went wrong!");
       }
 
       const { data } = await response.json();
+      console.log(data);
       const flightData = data.map((flight) => ({
         price: flight.price.base,
         id: flight.id,
+        travelers: flight.travelers,
+        originLocation: flight.originLocation,
+        iataCode: flight.iataCode,
+        destinationLocation: flight.destinationLocation,
+        // searchInput instead of arrival
+        duration: flight.duration
       }));
       navigate("/results", { state: { flightData } })
       console.log(flightData);
       setSearchedFlights(flightData);
-      setSearchInput("");
+      setDestinationLocation("");
     } catch (err) {
       // console.error(err);
     }
@@ -79,32 +93,39 @@ const Search = () => {
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination From</Form.Label>
             <Form.Control
+              value={originLocation}
               type="text"
-              placeholder="Enter a Destination"
+              placeholder="Leaving from"
               name="searchInput"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
+              // value={searchInput}
+              onChange={(e) => setOriginLocation(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination To</Form.Label>
-            <Form.Control type="text" placeholder="Enter a Destination"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}>
+            <Form.Control 
+              type="text" 
+              placeholder="Enter a Destination"
+              value={destinationLocation}
+              onChange={(e) => setDestinationLocation(e.target.value)}>
             </Form.Control>
           </Form.Group>
           <Form.Group className="searchForm" as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
-            <Form.Select defaultValue="Choose...">
+            <Form.Select 
+            value={travelers}
+            defaultValue="Choose..."
+            onChange={(event) => {setTravelers(event.target.value)}} 
+            >
               <option>Choose...</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
             </Form.Select>
           </Form.Group>
         </Row>
@@ -115,7 +136,7 @@ const Search = () => {
               as={Col}
               controlId="formGridState"
             >
-              {/* <Form.Label>Check In | Check Out</Form.Label>
+              <Form.Label>Check In | Check Out</Form.Label>
             <DatePicker
               selected={startDate}
               selectsStart
@@ -130,7 +151,7 @@ const Search = () => {
               endDate={endDate}
               minDate={startDate}
               onChange={(date) => setEndDate(date)}
-            /> */}
+            />
             </Form.Group>
           </Row>
         </Form>

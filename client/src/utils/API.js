@@ -1,7 +1,24 @@
-export function amadeiusFetch(searchInput){
-    const token = "bUwNiEDe9gMJHQAfNHFGhHrHZtNs"
+export function amadeiusFetch(destinationLocation, originLocation, startDate, endDate, travelers){
+    let travelersInput = travelers
+    if (!travelers) {
+        travelersInput = 1
+    }
+    let originInput = originLocation
+    if (!originLocation) {
+        originInput = 'SYD'
+    }
+    let startDateInput = startDate
+    if (!startDate) {
+        startDateInput = '2023-08-30'
+    }
+    let endDateInput = endDate
+    if (!endDate) {
+        endDateInput = '2024-01-01'
+    }
+    const token = "AMhsndp7GSGTcNuQY5YlFQHcAos5"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";
-    return fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=${searchInput}&departureDate=2023-11-01&adults=1&max=2`, {
+    return fetch
+    (`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originInput}&destinationLocationCode=${destinationLocation}&departureDate=${startDateInput}&returnDate=${endDateInput}&adults=${travelersInput}&max=8`, {
         method:"GET",
         headers:{
             "Content-Type":"application/vnd.amadeus+json",

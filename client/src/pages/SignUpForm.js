@@ -31,8 +31,8 @@ const SignupForm = () => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
+    const registerForm = event.currentTarget;
+    if (registerForm.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }

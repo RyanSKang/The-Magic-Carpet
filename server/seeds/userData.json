@@ -1,18 +1,18 @@
 [
     {
-        "name": "Jason Kodama",
-        "email": "jason@gmail.com"
+        "email": "jason@gmail.com",
+        "password": "password"
     },
     {
-        "name": "John Baldwin",
-        "email": "john@gmail.com"
+        "email": "john@gmail.com",
+        "password": "password"
     },
     {
-        "name": "Ryan Kang",
-        "email": "ryan@gmail.com"
+        "email": "ryan@gmail.com",
+        "password": "password"
     },
     {
-        "name": "Yaney Alvarado",
-        "email": "yaney@gmail.com"
+        "email": "yaney@gmail.com",
+        "password": "password"
     }
 ]

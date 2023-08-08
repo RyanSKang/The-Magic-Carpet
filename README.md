@@ -1,5 +1,5 @@
 # The-Magic-Carpet
-Project 3 travel booking application
+This application utilizes React on the front end, along with MongoDB Database, and Node.js/Express.js server and API. We are using a GraphQL API built with Apollo server to retrieve our data. The main goal of this application is to provide data bookings for our Users, so that they can see the world in a new perspective as a fellow traveler. 
 
 ## User Story
 ```
@@ -60,7 +60,9 @@ Following Installation Needed:
 3. Navigate the platform by inputting data in search engine and confirming desired flights  
 4. Check confirmed flights are being saved under 'My Trips' navlink  
 5. Log out  
-6. Double check that 'My Trips' can not be accessed without having an account
+6. Double check that 'My Trips' can not be accessed without having an account  
+7. You can access this project via Heroku:  
+    -<a href='https://the-magic-carpet-037d75dd3e3d.herokuapp.com/'>Heroku Application</a>
   
 
 ## Screenshots

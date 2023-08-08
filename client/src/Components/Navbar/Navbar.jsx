@@ -39,7 +39,7 @@ const NavbarMain = () => {
             </Nav>
 
             <Nav>
-              <Nav.Link href="#" onClick={() => auth.logout}>Log Out</Nav.Link>
+              <Nav.Link href="#" onClick={() => auth.logout()}>Log Out</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

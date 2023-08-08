@@ -11,23 +11,17 @@ db.once('open', async () => {
     const users = await User.insertMany(userData);
 
     console.log('Users seeded');
-    process.exit(0);
-});
 
-db.once('open', async () => {
     await Flights.deleteMany({});
 
     const flights = await Flights.insertMany(flightsData);
 
     console.log('Flights seeded');
-    process.exit(0);
-});
 
-db.once('open', async () => {
     await Itinerary.deleteMany({});
 
     const itinerary = Itinerary.insertMany(itineraryData);
 
     console.log('Itinerary seeded');
     process.exit(0);
-})
+});

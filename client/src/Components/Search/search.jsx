@@ -80,16 +80,8 @@ const Search = () => {
         <Button variant="secondary">Business</Button>
         <Button variant="secondary">First Class</Button>
       </ButtonGroup>
-      <Form onSubmit={handleFormSubmit}>
-        <Row
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '100%',
-            justifyContent: 'center',
-            width: '90%',
-            textAlign: 'center',
-          }}>
+      <Form onSubmit={handleFormSubmit} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', textAlign: 'center' }}>
+        <Row>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination From</Form.Label>
             <Form.Control
@@ -103,8 +95,8 @@ const Search = () => {
           </Form.Group>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination To</Form.Label>
-            <Form.Control 
-              type="text" 
+            <Form.Control
+              type="text"
               placeholder="Enter a Destination"
               value={destinationLocation}
               onChange={(e) => setDestinationLocation(e.target.value)}>
@@ -112,10 +104,10 @@ const Search = () => {
           </Form.Group>
           <Form.Group className="searchForm" as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
-            <Form.Select 
-            value={travelers}
-            defaultValue="Choose..."
-            onChange={(event) => {setTravelers(event.target.value)}} 
+            <Form.Select
+              value={travelers}
+              defaultValue="Choose..."
+              onChange={(event) => { setTravelers(event.target.value) }}
             >
               <option>Choose...</option>
               <option value="1">1</option>
@@ -128,48 +120,38 @@ const Search = () => {
               <option value="8">8</option>
             </Form.Select>
           </Form.Group>
+          <Form.Group className="searchForm" as={Col} controlId="formGridState">
+            <Form.Label>Check In | Check Out</Form.Label>
+            <Form style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 'auto' }}>
+              <DatePicker
+                className="p-1 l-1"
+                selected={startDate}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                onChange={(date) => setStartDate(date)}
+              />
+              <DatePicker
+                className="p-1 r-1"
+                selected={endDate}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                onChange={(date) => setEndDate(date)}
+              />
+            </Form>
+          </Form.Group>
         </Row>
-        <Form>
-          <Row>
-            <Form.Group
-              className="top-25 searchForm"
-              as={Col}
-              controlId="formGridState"
-            >
-              <Form.Label>Check In | Check Out</Form.Label>
-            <DatePicker
-              selected={startDate}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(date) => setStartDate(date)}
-            />
-            <DatePicker
-              selected={endDate}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              onChange={(date) => setEndDate(date)}
-            />
-            </Form.Group>
-          </Row>
-        </Form>
+      </Form>
+      <Form.Group style={{ display: 'flex', marginTop: '2rem' }}>
         <Button
-          style={{
-            display: "block",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-            boxShadow: '10px',
-            width: "30%"
-          }}
           variant="primary"
           type="submit"
-          className="btn-block my-5 mx-auto">
+          className="btn-block my-auto mx-auto">
           Search
         </Button>
-      </Form>
+      </Form.Group>
       <Container>
         {/* <h2 className='pt-5'>
           {searchedFlights.length

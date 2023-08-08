@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 // Importing Container & Card
 import { Container, Card } from "react-bootstrap";
-
 // Importing BootStrap CDN
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-
 // Importing react date range
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 // Importing amedius API
 import { amadeiusFetch } from "../../utils/API";
-
 const Search = () => {
   const [searchedFlights, setSearchedFlights] = useState([]);
   const [destinationLocation, setDestinationLocation] = useState("");
@@ -36,14 +31,12 @@ const Search = () => {
     if (!destinationLocation) {
       return false;
     }
-
     try {
       console.log(destinationLocation);
       const response = await amadeiusFetch(destinationLocation, originLocation, formatDate(startDate), formatDate(endDate), travelers);
       if (!response.ok) {
         // throw new Error("something went wrong!");
       }
-
       const { data } = await response.json();
       console.log(data);
       const flightData = data.map((data) => ({
@@ -64,7 +57,6 @@ const Search = () => {
       // console.error(err);
     }
   };
-
   // const handleChange = (value) => {
   //   // setInput(value);
   //   amadeusFetch(value);
@@ -80,8 +72,16 @@ const Search = () => {
         <Button variant="secondary">Business</Button>
         <Button variant="secondary">First Class</Button>
       </ButtonGroup>
-      <Form onSubmit={handleFormSubmit} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto', textAlign: 'center' }}>
-        <Row>
+      <Form onSubmit={handleFormSubmit}>
+        <Row
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            justifyContent: 'center',
+            width: '90%',
+            textAlign: 'center',
+          }}>
           <Form.Group as={Col} controlId="formGridState" className="searchForm">
             <Form.Label>Destination From</Form.Label>
             <Form.Control
@@ -105,9 +105,9 @@ const Search = () => {
           <Form.Group className="searchForm" as={Col} controlId="formGridState">
             <Form.Label>How many Travelers?</Form.Label>
             <Form.Select
-              value={travelers}
-              defaultValue="Choose..."
-              onChange={(event) => { setTravelers(event.target.value) }}
+            value={travelers}
+            defaultValue="Choose..."
+            onChange={(event) => {setTravelers(event.target.value)}}
             >
               <option>Choose...</option>
               <option value="1">1</option>
@@ -120,38 +120,48 @@ const Search = () => {
               <option value="8">8</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group className="searchForm" as={Col} controlId="formGridState">
-            <Form.Label>Check In | Check Out</Form.Label>
-            <Form style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 'auto' }}>
-              <DatePicker
-                className="p-1 l-1"
-                selected={startDate}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(date) => setStartDate(date)}
-              />
-              <DatePicker
-                className="p-1 r-1"
-                selected={endDate}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                onChange={(date) => setEndDate(date)}
-              />
-            </Form>
-          </Form.Group>
         </Row>
-      </Form>
-      <Form.Group style={{ display: 'flex', marginTop: '2rem' }}>
+        <Form>
+          <Row>
+            <Form.Group
+              className="top-25 searchForm"
+              as={Col}
+              controlId="formGridState"
+            >
+              <Form.Label>Check In | Check Out</Form.Label>
+            <DatePicker
+              selected={startDate}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              onChange={(date) => setStartDate(date)}
+            />
+            <DatePicker
+              selected={endDate}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              onChange={(date) => setEndDate(date)}
+            />
+            </Form.Group>
+          </Row>
+        </Form>
         <Button
+          style={{
+            display: "block",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            boxShadow: '10px',
+            width: "30%"
+          }}
           variant="primary"
           type="submit"
-          className="btn-block my-auto mx-auto">
+          className="btn-block my-5 mx-auto">
           Search
         </Button>
-      </Form.Group>
+      </Form>
       <Container>
         {/* <h2 className='pt-5'>
           {searchedFlights.length
@@ -182,6 +192,4 @@ const Search = () => {
     </>
   );
 };
-
-
 export default Search;

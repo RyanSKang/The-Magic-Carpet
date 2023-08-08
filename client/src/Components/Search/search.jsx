@@ -47,7 +47,8 @@ const Search = () => {
         // iataCode: data.iataCode,
         destinationLocation: data.itineraries[0].segments[0].arrival.iataCode,
         // searchInput instead of arrival
-        duration: data.duration
+        duration: data.itineraries[0].duration,
+  
       }));
       navigate("/results", { state: { flightData } })
       console.log(flightData);

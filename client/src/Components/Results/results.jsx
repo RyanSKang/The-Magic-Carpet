@@ -24,6 +24,7 @@ const ResultsPage = ({ ...props }) => {
           <p>{flight.travelers}</p>
           <p>{flight.iataCode}</p>
           <p>{flight.id}</p>
+          <p>{flight.duration}</p>
           <p>{flight.duration}</p> 
           <Button variant="primary" onClick={handleShow} className="me-2">
                 Purchase Flight
@@ -37,6 +38,7 @@ const ResultsPage = ({ ...props }) => {
                     have chosen. Like, text, images, lists, etc.
                 </Offcanvas.Body>
             </Offcanvas>
+
         </Card>
       ))}
       {/* <div>

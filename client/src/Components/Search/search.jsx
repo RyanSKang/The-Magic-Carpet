@@ -46,19 +46,19 @@ const Search = () => {
 
       const { data } = await response.json();
       console.log(data);
-      const flightData = data.map((flight) => ({
-        price: flight.price.base,
-        id: flight.id,
-        travelers: flight.travelers,
-        originLocation: flight.originLocation,
-        iataCode: flight.iataCode,
-        destinationLocation: flight.destinationLocation,
+      const flightData = data.map((data) => ({
+        price: data.price.base,
+        id: data.id,
+        travelers: data.travelers,
+        originLocation: data.originLocation,
+        iataCode: data.iataCode,
+        destinationLocation: data.destinationLocation,
         // searchInput instead of arrival
-        duration: flight.duration
+        duration: data.duration
       }));
       navigate("/results", { state: { flightData } })
       console.log(flightData);
-      setSearchedFlights(flightData);
+      setSearchedFlights(data);
       setDestinationLocation("");
     } catch (err) {
       // console.error(err);

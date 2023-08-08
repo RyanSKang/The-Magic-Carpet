@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+// import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+// import Button from 'react-bootstrap/Button';
+// import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useLocation} from 'react-router-dom';
 
 const ResultsPage = ({ ...props }) => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
     const location = useLocation();
     console.log(location.state);
     return (
@@ -16,6 +16,12 @@ const ResultsPage = ({ ...props }) => {
         {location.state.flightData.map((flight, i) => (
             <Card>
                 {flight.price}
+                {flight.id}
+                {flight.travelers}
+                {flight.originLocation}
+                {flight.iataCode}
+                {flight.destinationLocation}
+                {flight.duration}
             </Card>
         ))}
         {/* <div>

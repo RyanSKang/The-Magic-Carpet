@@ -25,7 +25,6 @@ const ResultsPage = ({ ...props }) => {
           <p>{flight.iataCode}</p>
           <p>{flight.id}</p>
           <p>{flight.duration}</p>
-          <p>{flight.duration}</p> 
           <Button variant="primary" onClick={handleShow} className="me-2">
                 Purchase Flight
             </Button>

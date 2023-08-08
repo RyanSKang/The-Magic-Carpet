@@ -18,7 +18,7 @@ export function amadeiusFetch(destinationLocation, originLocation, startDate, en
     if (!endDate) {
         endDateInput = '2024-01-01'
     }
-    const token = "3fYXs8sahQ5KItEVezceocawIRn4"
+    const token = "lGWOsfWlG4TsY8Cw1xPGqcGGfhXA"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";
     return fetch
     (`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originInput}&destinationLocationCode=${destinationLocation}&departureDate=${startDateInput}&returnDate=${endDateInput}&adults=${travelersInput}&max=8`, {

@@ -2,25 +2,18 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-
-// const passengerSchema = new Schema({
-//   stripeId: {
-//     type: String,
-//     required: true,
-//   },
-// });
+const Flights = require('./flights')
 
 const myUserSchema = new Schema({
   username: { type: String, reguired: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  passenger: {
-    type: Schema.Types.ObjectId,
-    ref: 'passengerSchema',
-    default: null,
+  // saveFlights: [Flights]
+},
+{
+  toJSON: {
+    virtuals: true,
   },
-  homeCity: { type: Array },
-  favoriteDestination: { type: Array },
 });
 
 // set up pre-save middleware to create password

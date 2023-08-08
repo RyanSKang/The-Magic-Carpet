@@ -41,8 +41,22 @@ const resolvers = {
             const token = signToken(user);
 
             return { token, user };
+        },
+        // saveFLight: async (parent, { flightInput}, context) => {
+        //     console.log(context.user);
+        //     console.log(flightInput);
+        //     if (context.user) {
+        //         const flight = await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             { $push: { savedFlights: flightInput } },
+        //             { new: true }
+        //         );
+        //         return flight;
+        //     }
+        //     throw new AuthenticationError("You need to be logged in!");
+
         }
     }
-};
+// };
 
 module.exports = resolvers;

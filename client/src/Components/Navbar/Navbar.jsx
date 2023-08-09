@@ -35,7 +35,7 @@ const NavbarMain = () => {
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
               <Nav.Link as={Link} to='#'>Flights</Nav.Link>
               <Nav.Link as={Link} to='#'>Hotels</Nav.Link>
-              <Nav.Link as={Link} to='#'>My Trips</Nav.Link>
+              <Nav.Link as={Link} to='/myTrips'>My Trips</Nav.Link>
             </Nav>
 
             <Nav>

@@ -19,7 +19,7 @@ const Payment = () => {
               <Row>
                 <Col xs={12} md={4}>
                   <Button type="submit" variant="success" size="lg">
-                    Submit test payment
+                    Checkout (Save)
                   </Button>
                 </Col>
               </Row>

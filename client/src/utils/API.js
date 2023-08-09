@@ -1,6 +1,26 @@
 //import ProxyAgent from 'https-proxy-agent';
     import Stripe from 'stripe';
 
+// route to get logged in user's info (needs the token)
+export const getMe = (token) => {
+  return fetch('/api/users/me', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+// remove saved book data for a logged in user
+export const deleteFlight = (flightId, token) => {
+  return fetch(`/api/users/myTrips/${flightId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export function amadeiusFetch(destinationLocation, originLocation, startDate, endDate, travelers){
     let travelersInput = travelers
     if (!travelers) {
@@ -18,7 +38,7 @@ export function amadeiusFetch(destinationLocation, originLocation, startDate, en
     if (!endDate) {
         endDateInput = '2024-01-01'
     }
-    const token = "fwhelGt2jVLqJEWnWdMS3pzhBtp1"
+    const token = "WCUMinZVIJztBYAxBfAcTKp8Ans0"
     // let url = "test.api.amadeus.com/v2/shopping/flight-offers";
     return fetch
     (`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${originInput}&destinationLocationCode=${destinationLocation}&departureDate=${startDateInput}&returnDate=${endDateInput}&adults=${travelersInput}&max=8`, {

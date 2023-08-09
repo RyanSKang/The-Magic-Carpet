@@ -8,7 +8,7 @@ const myUserSchema = new Schema({
   username: { type: String, reguired: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  // saveFlights: [Flights]
+  flights: [{type: Schema.Types.ObjectId, ref: 'flights'}]
 },
 {
   toJSON: {

@@ -4,19 +4,21 @@ import {
   Card,
   Button,
   Row,
-  Col
 } from 'react-bootstrap';
 
 import { getMe, deleteFlight } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeFlightId } from '../utils/localStorage';
+import { QUERY_USER } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 
 const SavedFlights = () => {
   const [userData, setUserData] = useState({});
 
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  // const userDataLength = Object.keys(userData).length;
 
+  const { data, error, loading } = useQuery(QUERY_USER)
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -26,21 +28,24 @@ const SavedFlights = () => {
           return false;
         }
 
-        const response = await getMe(token);
+        // const response = await getMe(token);
 
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
+        // if (!response.ok) {
+        //   throw new Error('something went wrong!');
+        // }
 
-        const user = await response.json();
-        setUserData(user);
+        // const user = await response.json();
+
+        console.log(data);
+
+        setUserData(data.user);
       } catch (err) {
         console.error(err);
       }
     };
 
     getUserData();
-  }, [userDataLength]);
+  }, [data]);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteFlight = async (flightId) => {
@@ -67,7 +72,7 @@ const SavedFlights = () => {
   };
 
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
@@ -80,14 +85,14 @@ const SavedFlights = () => {
       </div>
       <Container>
         <h2 className='pt-5'>
-          {userData.savedFlights.length
-            ? `Viewing ${userData.savedFlights.length} saved ${userData.savedFlights.length === 1 ? 'book' : 'books'}:`
+          {userData.flights && userData.flights.length
+            ? `Viewing ${userData.flights.length} saved ${userData.flights.length === 1 ? 'flight' : 'flights'}:`
             : 'You have no saved flights!'}
         </h2>
         <Row>
-          {userData.savedBooks.map((flight) => {
+          {userData.flights && userData.flights.length ? (userData.flights.map((flight) => {
             return (
-                <Card>
+              <Card>
                 <p>{flight.originLocation}</p>
                 <p>{flight.destinationLocation}</p>
                 <p>{flight.price}</p>
@@ -96,11 +101,11 @@ const SavedFlights = () => {
                 <p>{flight.id}</p>
                 <p>{flight.duration}</p>
                 <Button variant="primary" onClick={() => handleDeleteFlight(flight.flightId)} className="me-2">
-                      Delete Flight
-                  </Button>
+                  Delete Flight
+                </Button>
               </Card>
             );
-          })}
+          })) : (<h2>You have no flights</h2>)}
         </Row>
       </Container>
     </>

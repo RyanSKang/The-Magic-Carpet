@@ -14,7 +14,7 @@ const magicCarpetSchema = new Schema({
   flightId: { type: String, required: true }
 });
 
-const Flights = model("Flights", magicCarpetSchema);
+const Flights = model("flights", magicCarpetSchema);
 
 module.exports = Flights;
 

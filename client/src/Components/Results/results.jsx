@@ -34,7 +34,7 @@ const ResultsPage = ({ ...props }) => {
                     <Offcanvas.Title>Payment Checkout</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <Payment />
+                    <Payment flight={flight}/>
                 </Offcanvas.Body>
             </Offcanvas>
 

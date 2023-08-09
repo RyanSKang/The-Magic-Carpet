@@ -4,8 +4,8 @@ export const QUERY_USER = gql`
     {
         user {
             username
-            savedFlights {
-                flightId
+            flights {
+                _id
                 departureDate
                 returnDate
                 departureLocation

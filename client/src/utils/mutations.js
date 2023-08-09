@@ -26,12 +26,12 @@ export const ADD_USER = gql`
         `;
 
 export const SAVE_FLIGHT = gql`
-    mutation saveFlight($input: FlightInput) {
-        saveFlight(input: $input) {
+    mutation saveFlight($flightInput: FlightInput) {
+        saveFlight(flightInput: $flightInput) {
             _id
             username
-            savedFlights {
-                flightID
+            flights {
+                _id
                 departureDate
                 returnDate
                 departureLocation

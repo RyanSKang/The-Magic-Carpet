@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        savedFlights: [Flights]
+        flights: [Flights]
     }
     
     type Flights {
@@ -40,6 +40,7 @@ const typeDefs = gql`
     }
 
     input FlightInput {
+        userId: ID
         airline: String
         departureDate: Int
         returnDate: Int

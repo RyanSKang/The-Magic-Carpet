@@ -9,10 +9,17 @@ const resolvers = {
         },
         user: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findById(context.user._id).populate('flights');
-                return user;
-            };
-            throw new AuthenticationError('Not logged in')
+                console.log(context.user);
+                try {
+                    const user = await User.findById(context.user._id).populate('flights');
+                    console.log(user)
+                    return user;
+                }
+                catch (err) {
+                    console.log(err)
+                    throw new AuthenticationError('Not logged in')
+                }
+            }
         },
         itinerary: async (parent, { _id }) => {
             return await Itinerary.findById(_id).populate();
@@ -42,18 +49,20 @@ const resolvers = {
 
             return { token, user };
         },
-        async saveFlight({ user, body }, res) {
-            console.log(user);
+        async saveFlight(parent, { flightInput }) {
+            if (context.user) {
+                const flights= await Flights.create({
+                    
+                })
+            }
             try {
                 const updatedUser = await User.findOneAndUpdate(
-                    { _id: user._id },
-                    { $addToSet: { savedFlights: body } },
+                    { _id: flightInput.userId },
+                    { $addToSet: { flights: {username: fl}} },
                     { new: true, runValidators: true }
                 );
-                return res.json(updatedUser);
             } catch (err) {
                 console.log(err);
-                return res.status(400).json(err);
             }
         },
         // remove a flight from `savedFlights`

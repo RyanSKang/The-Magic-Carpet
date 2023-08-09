@@ -13,3 +13,18 @@ export const saveFlightsId = (flightsIdArr) => {
     }
 };
 
+export const removeFlightId = (flightId) => {
+    const savedFlightIds = localStorage.getItem('saved_flights')
+      ? JSON.parse(localStorage.getItem('saved_flights'))
+      : null;
+  
+    if (!savedFlightIds) {
+      return false;
+    }
+  
+    const updatedSavedFlightIds = savedFlightIds?.filter((savedFlightId) => savedFlightId !== flightId);
+    localStorage.setItem('saved_flights', JSON.stringify(updatedSavedFlightIds));
+  
+    return true;
+  };
+

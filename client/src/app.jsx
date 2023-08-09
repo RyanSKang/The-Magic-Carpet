@@ -24,6 +24,7 @@ import CheckOutForm from './pages/CheckOutForm';
 // import Login from './pages/login';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import SavedFlights from './pages/myTrips';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -88,6 +89,10 @@ const App= () => {
                             <CheckOutForm />
                           </Elements>}
                         />
+                        <Route
+                            path="/myTrips"
+                            element={<SavedFlights/>}
+                        />    
                     </Routes>
                 </div>
             </Router>

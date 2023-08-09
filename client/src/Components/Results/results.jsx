@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useLocation } from "react-router-dom";
+import Payment from '../../pages/payment';
 
 const ResultsPage = ({ ...props }) => {
   const [show, setShow] = useState(false);
@@ -33,8 +34,7 @@ const ResultsPage = ({ ...props }) => {
                     <Offcanvas.Title>Payment Checkout</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
+                    <Payment />
                 </Offcanvas.Body>
             </Offcanvas>
 
